@@ -8,7 +8,7 @@
 #This script is free software; you can redistribute it and/or modify it.
 #This  script is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of merchantability or fitness for a particular purpose.
 
-my $USAGE = 	"\nusage: perl BLAST2OGMSA.pl -method=[Gblocks|trimAl|BMGE|noisy] <file.aln> <seqdump.txt> <species_name> <output.fasta>\n";
+my $USAGE = 	"\nusage: perl BLAST2OGMSA.pl -method=[Gblocks|trimAl|BMGE|noisy] <file.aln> <seqdump.txt> <output.fasta>\n";
 
 my $method;
 my $aln = $ARGV[1];
@@ -40,11 +40,6 @@ if (!$ARGV[2]){
 		print "Please provide the raw sequence file download from blastn results.\n"
 	}
 if (!$ARGV[3]){
-		print $USAGE;
-		exit;
-		print "Please provide the species name that was inputted as the query sequence.\n"
-	}
-if (!$ARGV[4]){
 		print $USAGE;
 		exit;
 		print "Please provide the name of output file.\n"
