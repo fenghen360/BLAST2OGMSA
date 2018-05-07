@@ -42,7 +42,7 @@ The working flow diagram was shown below.<br/>
 unzip HomBlocks-master.zip
 
 # Note that Homblocks.pl is the main program, you can check it's usage by
-perl Homblocks.pl
+perl BLAST2OGMSA.pl
 
 # Check wether programs in bin directory are executable. if they are not, change their permission.
 cd HomBlocks-master
@@ -66,10 +66,6 @@ chmod 755 *
 
 1. perl with version above 5
 2. java with version above 1.7 (required by BMGE.jar)
-3. python with version above 2.7 (required by PartitionFinder)
-4. circos (optimal)
-  1. circos is not easy to install on a linux server without root permissions. If you want install to visualize the genes involved in the alignments. You can use perl scipts cpanm.pl (```http://xrl.us/cpanm```) to install perl modules. Otherwise, my advice is to do this visualization on circoletto webserver http://tools.bat.infspire.org/circoletto/ by input of one final alignment sequence from a species and a corresponding set of every single gene sequence, respectively. <br/>
-    
 
 ## Tutorial
 
@@ -79,28 +75,11 @@ To begin with, you can check the usage of HomBlocks without any parameters.<br/>
 
 ```bash
 # check usage
-perl HomBlocks.pl
+perl BLAST2OGMSA.pl
 
 # The print of screen should be like this
-usage: ./HomBlocks.pl <parameters>
-         
-parameters:
-                -in=<file>                            Genome alignment outputfile derived from Muave. If you set --align, ignore this input parameter.
-                -out_seq=<file>                       Output file of trimmed and concatenated sequences.
-                -number=<int>                         Number of taxa used in aliggment (should be precious). If you set --align, ignore this input parameter.
-                -min=<int>                            Minimum alignment length of a extracted module. (Default: unset)
-                -method=[Gblocks|trimAl|BMGE|noisy]   To choose which program to be used in alignment trimming. (Default: Gblocks).
-                --PartitionFinder                     To calculate the best subsitition model for each extracted colinear block and set best partition scheme by PartitionFinder.
 
-                --align                               If you want to align sequences by mauve, add this parameter (Default: progressiveMauve).
-                                                      Then you should split every sequence into a single file. File suffix with fasta,gb,fas,fa is acceptable.
-                --path=                               Absolute path to directory where you put in fasta sequences (Under --align parameter).
-
-                --mauve-out=                          The output file produced by mauve (Absolute path). If you set --align parameter.
-               
-           
-
-                -help/h                               Print the usage.
+usage: perl BLAST2OGMSA.pl -method=[Gblocks|trimAl|BMGE|noisy] <file.aln> <seqdump.txt> <species_name> <output.fasta>
 
 
 ```
