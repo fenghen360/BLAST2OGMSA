@@ -30,34 +30,23 @@ The working flow diagram was shown below.<br/>
 
 
 ## Installation
-　　HomBlocks is a pipeline that implemented by Perl 5. <br/>
-　　No external installation is needed for HomBlocks.<br/>
+　　BLAST2OGMSA is a pipeline that implemented by Perl 5. <br/>
+　　No external installation is needed for BLAST2OGMSA.<br/>
 　　All the dependencies external executable files are placed under bin directory.<br/>
-　　git clone https://github.com/fenghen360/HomBlocks.git　<br/>
+　　git clone https://github.com/fenghen360/BLAST2OGMSA.git　<br/>
 　　Or download the zip compressed files into your work directory<br/>
   
 
 ```bash
 # Decompressing files
-unzip HomBlocks-master.zip
+unzip BLAST2OGMSA-master.zip
 
 # Note that Homblocks.pl is the main program, you can check it's usage by
 perl BLAST2OGMSA.pl
 
 # Check wether programs in bin directory are executable. if they are not, change their permission.
-cd HomBlocks-master
+cd BLAST2OGMSA-master
 cd bin
-chmod 755 *
-
-# make programes in PartitionFinderV1.1.1 executable
-cd ..
-cd PartitionFinderV1.1.1
-chmod 755 *
-chmod 755 PartitionFinder*
-cd programs
-chmod 755 *
-cd ..
-cd partfinder
 chmod 755 *
 
 ```
@@ -69,7 +58,7 @@ chmod 755 *
 
 ## Tutorial
 
-　　HomBlocks is not complex to use. What it needs are fasta or gebank files (fasta, fas, fa or gb suffix). You must put all these sequences **in a directory**. Like these test sequnces that were put in **Xenarthrans/fasta**.<br/>
+　　BLAST2OGMSA is not complex to use. What it needs are fasta or gebank files (fasta, fas, fa or gb suffix). You must put all these sequences **in a directory**. Like these test sequnces that were put in **Xenarthrans/fasta**.<br/>
 
 To begin with, you can check the usage of HomBlocks without any parameters.<br/>
 
