@@ -71,7 +71,9 @@ while (<IN>) {
 		if (exists $seq{$sid}){$turnoff=0;} else{$turnoff=1;}
         }
 	else {
-       if($turnoff==1){$seq{$sid} .= $_;}
+       if($turnoff==1){
+	   $_=~tr/BDHIKMNRSVWY/NNNNNNNNNNNN/;
+	   $seq{$sid} .= $_;}
     }
 }
 close IN;
