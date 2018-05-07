@@ -52,7 +52,9 @@ open (LIST,$seqdump) or die "Cannot open file $seqdump: $!\n";
 while (<LIST>) {    
 	    if (/^>(.*)/) {
 		my @y = split /\|/, $1;
-        my @w = split /\s/, $y[1];
+		my @w;
+        if(@y>2){@w = split /\s/, $y[1];}
+		else{@w = split /\s/, $y[0];}
 		my $id = "$w[0]-$w[1]-$w[2]-$w[3]";
 		push @list, $id;
     }
@@ -228,7 +230,8 @@ my $end_name;
 open (OUT, ">$out") or die "Cannot create file $outs: $!\n";
 foreach my $id (@list) {
 	my @new= split /-/,$id;
-    print OUT ">$new[1]_$new[2]_$new[3]\n";
+    if($new[0]=~m/Query/){print OUT ">$new[1]_$new[2]_$new[3]\n";}
+	else{print OUT ">$new[0]_$new[1]_$new[2]\n";}
     print OUT $seq2{"$new[0]"};
 }
 close OUT;
