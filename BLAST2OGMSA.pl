@@ -57,8 +57,9 @@ my @list = ();
 open (LIST,$seqdump) or die "Cannot open file $seqdump: $!\n";
 while (<LIST>) {    
 	    if (/^>(.*)/) {
-        my @w = split /\s/, $1;
-		my $id = "$w[0]_$w[1]_$w[2]";
+		my @y = split /\|/, $1;
+        my @w = split /\s/, $y[1];
+		my $id = "$w[0]-$w[1]-$w[2]-$w[3]";
 		push @list, $id;
     }
  }
@@ -202,14 +203,16 @@ my $sid2 = ();
 open (INI, "$aln.fasta") or die "Cannot open file $aln.fasta: $!\n";;
 while (<INI>) {
     if (/^\>(\S+)/) {
+	    chomp;
         $sid2 = $1;
-        my @w = split /\|/, $sid2;
-        if (@w > 2) {
-            $sid2 = $w[2];   
-        } else {
-            $sid2 = $w[0];
-        }
-    } else {
+        #my @w = split /\|/, $sid2;
+        #if (@w > 2) {
+            #$sid2 = $w[2];   
+        #} else {
+         #   $sid2 = $w[0];
+        #}
+    } 
+	else {
         $seq2{$sid2} .= $_;
     }
 }
@@ -218,18 +221,18 @@ close INI;
 
 my @query = keys %seq2;
 my $end_name;
-foreach (@query){
-if(m/Query/){$end_name = $_;}
-}
-open (YOU, ">$out") or die "Cannot create file $outs: $!\n";
-print YOU ">$species\n";
-print YOU $seq2{"$end_name"};
-close YOU;
+#foreach (@query){
+#if(m/Query/){$end_name = $_;}
+#}
+#open (YOU, ">$out") or die "Cannot create file $outs: $!\n";
+#print YOU ">$species\n";
+#print YOU $seq2{"$end_name"};
+#close YOU;
 
-open (OUT, ">>$out") or die "Cannot create file $outs: $!\n";
+open (OUT, ">$out") or die "Cannot create file $outs: $!\n";
 foreach my $id (@list) {
-	my @new= split /_/,$id;
-    print OUT ">$id\n";
+	my @new= split /-/,$id;
+    print OUT ">$new[1]_$new[2]_$new[3]\n";
     print OUT $seq2{"$new[0]"};
 }
 close OUT;
