@@ -13,8 +13,7 @@ my $USAGE = 	"\nusage: perl BLAST2OGMSA.pl -method=[Gblocks|trimAl|BMGE|noisy] <
 my $method;
 my $aln = $ARGV[1];
 my $seqdump = $ARGV[2];
-my $species = $ARGV[3];
-my $out = $ARGV[4];
+my $out = $ARGV[3];
 
 foreach my $paras (@ARGV){
 	if ($paras=~/-help/){
